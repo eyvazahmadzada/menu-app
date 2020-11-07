@@ -1,65 +1,48 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Head from "next/head";
+import React, { useEffect, useState } from "react";
+import axios from "../axios";
+import MenuSection from "../components/MenuSection";
+import SideBar from "../components/Sidebar";
 
-export default function Home() {
+export default function App() {
+  const [menuSections, setMenuSections] = useState([]);
+  const [activeSectionId, setActiveSectionId] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("/menus/menu-section/")
+      .then((response) => {
+        setMenuSections(response.data);
+        setActiveSectionId(response.data[0].id);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
-        <title>Create Next App</title>
+        <title>Menu App</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <main className="container-fluid p-3">
+        <div className="row">
+          <div className="col-6">
+            <SideBar
+              menuSections={menuSections}
+              onSectionSelected={(id) => setActiveSectionId(id)}
+              activeId={activeSectionId}
+            />
+          </div>
+          <div className="col-6">
+            <MenuSection sectionId={activeSectionId} />
+          </div>
         </div>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
-  )
+  );
 }
