@@ -1,3 +1,46 @@
 body {
     min-width: 320px;
+    font-family: 'Exo', sans-serif;
+}
+
+@media only screen and (max-width: 992px) {
+    body {
+        font-size: 0.975rem;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        font-size: 0.95rem;
+    }
+
+    h5 {
+        font-size: 1.05rem;
+    }
+
+    h1 {
+        font-size: 2.3rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    body {
+        font-size: 0.925rem;
+    }
+
+    h5 {
+        font-size: 0.95rem;
+    }
+
+    h1 {
+        font-size: 2.1rem;
+    }
 }
