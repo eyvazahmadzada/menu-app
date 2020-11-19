@@ -25,7 +25,7 @@ const MenuSection = (props) => {
   }, [id]);
 
   const renderSectionItem = (item, index) => (
-    <div className="col-md-6 mb-3" key={index}>
+    <div className="col-md-6" key={index}>
       <SectionItem
         title={item.title}
         ingredients={item.ingredients}

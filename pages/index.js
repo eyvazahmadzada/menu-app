@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <div className="row mt-2 justify-content-center align-items-center">
+      <div className="row align-items-center justify-content-center mt-2">
         {content}
       </div>
     </div>
