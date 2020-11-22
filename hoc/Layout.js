@@ -21,7 +21,7 @@ const Layout = (props) => {
         />
       </Head>
 
-      <main className="container-fluid min-vh-100">{props.children}</main>
+      <main className="container-fluid">{props.children}</main>
     </div>
   );
 };

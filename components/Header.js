@@ -1,10 +1,10 @@
 import React from "react";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <div className="row header">
-      <h1>Namlı Kebap Menü</h1>
-      <h5>Afiyet Olsun!</h5>
+      <h1>{props.title}</h1>
+      <h5>{props.greeting}</h5>
       <style jsx>{`
         .header {
           position: relative;
@@ -22,7 +22,7 @@ const Header = () => {
           position: absolute;
           display: block;
           content: "";
-          background-image: url("/home.jpg");
+          background-image: url("http://juniorbee.pythonanywhere.com/${props.img}");
           background-size: cover;
           width: 100%;
           height: 100%;

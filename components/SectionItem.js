@@ -22,7 +22,7 @@ const MenuItem = (props) => {
           background-color: #f5f5f5;
           height: 100px;
           padding: 0 0.7rem;
-          margin: 0.5rem 0;
+          margin: 0.25rem 0;
           box-shadow: 1px 1px 2px #ccc;
         }
 

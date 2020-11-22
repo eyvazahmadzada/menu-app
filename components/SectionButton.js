@@ -11,16 +11,17 @@ const SectionButton = (props) => {
   return (
     <div>
       <button className={btnClassName} onClick={props.clicked}>
-        {props.children}
+        <span>{props.children}</span>
         <i className={"fa " + iconClassName} aria-hidden="true"></i>
       </button>
       <style jsx>{`
         .btn-custom {
+          display: flex;
+          justify-content: space-between;
           background-color: #ccc;
           font-weight: bold;
           border: 1px solid gray;
           width: 100%;
-          margin: 0.5rem 0;
           box-shadow: 1px 1px 1px #ccc;
         }
 
@@ -33,7 +34,6 @@ const SectionButton = (props) => {
         }
 
         .btn-custom > i {
-          margin-left: 5px;
           font-size: 1.2rem;
         }
       `}</style>
